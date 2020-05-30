@@ -14,6 +14,10 @@ class Pair {
         return new Pair(null, null);
     }
 
+    is_null() {
+        return this.x === null && this.y === null;
+    }
+
     toString() {
         return `[${this.x ? this.x : "_"}, ${this.y ? this.y : "_"}]`;
     }
@@ -25,14 +29,34 @@ export function pair(x, y) {
     return Pair.of(x, y);
 }
 
-export function head(list) {
-    return list.x;
+export function head(xs) {
+    return xs.x;
 }
 
-export function tail(list) {
-    return list.y;
+export function tail(xs) {
+    return xs.y;
 }
 
+/**
+ * @param {Pair} xs 
+ */
+export function is_null(xs) {
+    return xs.is_null();
+}
+
+/**
+ * @param {List} xs 
+ */
+export function length(xs) {
+    function length_iter(xs, count) {
+        return is_null(xs)
+            ? count
+            : length_iter(tail(xs), count + 1);
+    }
+    return length_iter(xs, 0);
+}
+
+// listRec::[xs] -> List[xs]
 export function listRec(xs) {
     return xs.length === 0 ?
         Pair.empty() :

@@ -11,7 +11,7 @@
             "skipFiles": [
                 "<node_internals>/**"
             ],
-            "program": "${workspaceFolder}/ch-2/pair_functions.js"
+            "program": "${workspaceFolder}/ch-2/list_functions.js"
         }
     ]
 }
