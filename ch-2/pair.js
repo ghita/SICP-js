@@ -25,10 +25,21 @@ export function pair(x, y) {
     return Pair.of(x, y);
 }
 
-export function list(xs) {
+export function listRec(xs) {
     return xs.length === 0 ?
         Pair.empty() :
         (xs.length === 1) ?
             pair(xs[0], null) :
-            pair(xs[0], list(xs.slice(1)));
+            pair(xs[0], listRec(xs.slice(1)));
 }
+
+export function listIter(xs) {
+    const construct = (list, index) => {
+        return (index === 0) ?
+            pair(xs[index], list) :
+            construct(pair(xs[index], list), index - 1);
+    }
+
+    return construct(Pair.empty(), xs.length - 1);
+}
+
