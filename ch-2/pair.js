@@ -25,6 +25,14 @@ export function pair(x, y) {
     return Pair.of(x, y);
 }
 
+export function head(list) {
+    return list.x;
+}
+
+export function tail(list) {
+    return list.y;
+}
+
 export function listRec(xs) {
     return xs.length === 0 ?
         Pair.empty() :
