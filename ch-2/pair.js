@@ -33,6 +33,7 @@ export function listRec(xs) {
             pair(xs[0], listRec(xs.slice(1)));
 }
 
+// listIter::[xs] -> List[xs]
 export function listIter(xs) {
     const construct = (list, index) => {
         return (index === 0) ?
